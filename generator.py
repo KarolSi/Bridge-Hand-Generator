@@ -1,5 +1,23 @@
 import random as rd
 
+def wypisanie(zawo):
+    print('N:')
+    print("     ♠ ", end=" ")
+    for i in range(len(zawo["1"])):
+        print(zawo["1"][i], end=" ")
+    print("")
+    print("     ♥ ", end=" ")
+    for i in range(len(zawo["2"])):
+        print(zawo["2"][i], end=" ")
+    print("")
+    print("     ♦ ", end=" ")
+    for i in range(len(zawo["3"])):
+        print(zawo["3"][i], end=" ")
+    print("")
+    print("     ♣ ",end = " ")
+    for i in range(len(zawo["4"])):
+        print(zawo["4"][i], end=" ")
+
 
 def losowanie(zawodnik):
         global zaw 
@@ -9,11 +27,8 @@ def losowanie(zawodnik):
 
         if(karty[karta+13*kolor]!='#'):
             zawodnik[str(kolor+1)].append(karty[karta+(13*kolor)])
-            #print(karty[karta+13*kolor])
-            #print(kolor)
-            #print(karta)
             karty[karta+13*kolor] = '#'
-            #print(karty)
+        
             return 0
         else:
             losowanie(zaw)
@@ -35,11 +50,8 @@ for i in range(roz):
         losowanie(S)
         losowanie(E)
         losowanie(W)
-    print(N)
-    print(S)
-    print(W)
-    print(E)
-
+    wypisanie(N)
+    
 
     
     
