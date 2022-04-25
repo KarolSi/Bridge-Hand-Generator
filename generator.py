@@ -1,27 +1,29 @@
 import random as rd
-import turtle 
+import turtle
+
 
 SPos = turtle.Vec2D(-50, -150)
 NPos = turtle.Vec2D(-50, 150)
 WPos = turtle.Vec2D(-150,50)
 EPos = turtle.Vec2D(150, 50)
 
-def writing(pla):
-    
-    for i in range(len(pla["1"])):
-        print(pla["1"][i], end=" ")
-    print("")
-    
-    for i in range(len(pla["2"])):
-        print(pla["2"][i], end=" ")
-    print("")
-    
-    for i in range(len(pla["3"])):
-        print(pla["3"][i], end=" ")
-    print("")
-    
-    for i in range(len(pla["4"])):
-        print(pla["4"][i], end=" ")
+def writing(pos, pla):
+    global p, ki, ka, t, NPos
+    p = "♠ "
+    ki = "♥ "
+    ka = "♦ "
+    t = "♣ "
+    colors = [" ",p,ki,ka,t]
+    for key in range(1,5):
+        
+        for i in range(len(pla[str(key)])):
+                colors[key] += (pla[str(key)][i])
+                colors[key] += " "
+        writer.goto(pos)
+        print(pos[1])
+        pos -= turtle.Vec2D(0,20)
+        print(colors[key])
+        writer.write(colors[key])
 
 def draw(player):
         global zaw 
@@ -36,7 +38,6 @@ def draw(player):
             return 0
         else:
             draw(zaw)
-
 
 
 #Window setting
@@ -63,10 +64,10 @@ print("ile rozdań rozdać?")
 roz = int(input("<<"))
 
 for i in range(roz):
-    N = {'1': ["♠ "],'2': ["♥ "], '3': ["♦ "], '4': ["♣ "]}
-    E = {'1': ["♠ "],'2': ["♥ "], '3': ["♦ "], '4': ["♣ "]}
-    S = {'1': ["♠ "],'2': ["♥ "], '3': ["♦ "], '4': ["♣ "]}
-    W = {'1': ["♠ "],'2': ["♥ "], '3': ["♦ "], '4': ["♣ "]}
+    N = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
+    E = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
+    S = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
+    W = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
     cards = [" ","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A"]
 
     for i in range(0,13):
@@ -74,10 +75,15 @@ for i in range(roz):
         draw(S)
         draw(E)
         draw(W)
-    writing(N)
+        
+    writing(WPos, W)
+    writing(EPos, E)
+    writing(NPos, N)
+    writing(SPos, S)
+    ht = int(input("<<<"))
+        
     
-    
-    
+
 
     
     

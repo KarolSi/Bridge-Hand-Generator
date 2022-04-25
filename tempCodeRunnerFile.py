@@ -1,0 +1,1 @@
+writer.goto(NPos)
