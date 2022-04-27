@@ -2,10 +2,10 @@ import random as rd
 import turtle
 
 
-SPos = turtle.Vec2D(-50, -150)
+SPos = turtle.Vec2D(-50,-100)
 NPos = turtle.Vec2D(-50, 150)
-WPos = turtle.Vec2D(-150,50)
-EPos = turtle.Vec2D(150, 50)
+WPos = turtle.Vec2D(-120,50)
+EPos = turtle.Vec2D(100, 50)
 
 def writing(pos, pla):
     global p, ki, ka, t, NPos
@@ -75,7 +75,7 @@ for i in range(roz):
         draw(S)
         draw(E)
         draw(W)
-        
+
     writing(WPos, W)
     writing(EPos, E)
     writing(NPos, N)
