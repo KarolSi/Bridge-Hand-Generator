@@ -1,11 +1,12 @@
 import random as rd
+from turtle import Screen
 import turtle
 
 
-SPos = turtle.Vec2D(-50,-100)
-NPos = turtle.Vec2D(-50, 150)
-WPos = turtle.Vec2D(-120,50)
-EPos = turtle.Vec2D(100, 50)
+SPos = turtle.Vec2D(-50,-120)
+NPos = turtle.Vec2D(-50, 160)
+WPos = turtle.Vec2D(-240,30)
+EPos = turtle.Vec2D(110, 30)
 
 def writing(pos, pla):
     global p, ki, ka, t, NPos
@@ -20,10 +21,10 @@ def writing(pos, pla):
                 colors[key] += (pla[str(key)][i])
                 colors[key] += " "
         writer.goto(pos)
-        print(pos[1])
-        pos -= turtle.Vec2D(0,20)
-        print(colors[key])
-        writer.write(colors[key])
+        #print(pos[1])
+        pos -= turtle.Vec2D(0,25)
+        #print(colors[key])
+        writer.write(colors[key], font=("Courier", 14, "bold"))
 
 def draw(player):
         global zaw 
@@ -39,6 +40,27 @@ def draw(player):
         else:
             draw(zaw)
 
+def deal(x, y):
+    writer.clear()
+    global cards
+    N = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
+    E = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
+    S = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
+    W = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
+    cards = [" ","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A"]
+
+    for i in range(0,13):
+        draw(N)
+        draw(S)
+        draw(E)
+        draw(W)
+
+
+    writing(WPos, W)
+    writing(EPos, E)
+    writing(NPos, N)
+    writing(SPos, S)
+    
 
 #Window setting
 wn = turtle.Screen()
@@ -60,27 +82,25 @@ writer.up()
 writer.ht()
 
 
-print("ile rozdań rozdać?")
-roz = int(input("<<"))
+#button setting
+button = turtle.Turtle()
+button.hideturtle()
+button.shape('square')
+button.shapesize(1,3)
+button.fillcolor('red')
+button.penup()
+button.setpos(100,-240)
+button.write("Deal!", align='center', font=20)
+button.showturtle()
+button.setpos(100, -250)
+button.onclick(deal)
+screen = Screen()
+screen.mainloop()
 
-for i in range(roz):
-    N = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
-    E = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
-    S = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
-    W = {'1': [" "],'2': [" "], '3': [" "], '4': [" "]}
-    cards = [" ","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A","2","3","4","5","6","7","8","9","T","J","Q","K","A"]
 
-    for i in range(0,13):
-        draw(N)
-        draw(S)
-        draw(E)
-        draw(W)
 
-    writing(WPos, W)
-    writing(EPos, E)
-    writing(NPos, N)
-    writing(SPos, S)
-    ht = int(input("<<<"))
+
+
         
     
 
