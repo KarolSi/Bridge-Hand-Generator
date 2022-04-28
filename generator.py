@@ -7,24 +7,33 @@ SPos = turtle.Vec2D(-50,-120)
 NPos = turtle.Vec2D(-50, 160)
 WPos = turtle.Vec2D(-240,30)
 EPos = turtle.Vec2D(110, 30)
+comp = {"♣": 1, "♦": 1, "♥": 1, "♠": 1," ":2, "A": 3, "K": 4, "Q": 5,"J": 6,"T": 7,"9": 8,"8": 9, "7": 10, "6": 11, "5": 12,"4":13,"3":14,"2":15}
 
 def writing(pos, pla):
-    global p, ki, ka, t, NPos
-    p = "♠ "
-    ki = "♥ "
-    ka = "♦ "
-    t = "♣ "
+    global p, ki, ka, t, NPos, comp
+    p = "♠"
+    ki = "♥"
+    ka = "♦"
+    t = "♣"
     colors = [" ",p,ki,ka,t]
-    for key in range(1,5):
+    for k in range(1,5):
+        hand = ""
         
-        for i in range(len(pla[str(key)])):
-                colors[key] += (pla[str(key)][i])
-                colors[key] += " "
+        for i in range(1,len(pla[str(k)])):
+                colors[k] += (pla[str(k)][i])
+                
+                
         writer.goto(pos)
-        #print(pos[1])
         pos -= turtle.Vec2D(0,25)
-        #print(colors[key])
-        writer.write(colors[key], font=("Courier", 14, "bold"))
+        colors[k] = sorted(colors[k], key=comp.get)
+        print(colors[k])
+
+        for i in range(len(colors[k])):
+            hand += colors[k][i]
+            hand += " "
+
+        writer.write(hand, font=("Courier", 14, "bold"))
+    print(" ")
 
 def draw(player):
         global zaw 
